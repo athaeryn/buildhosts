@@ -13,8 +13,8 @@ out.write readFile "header"
     out.write "::1        #{hosts[i]}\n"
     out.write "127.0.0.1  #{hosts[i]}\n"
     (0..ips.length - 1).each do |j|
-        out.write "::1        #{hosts[i]}.#{ips[j]}\n"
-        out.write "127.0.0.1  #{hosts[i]}.#{ips[j]}\n"
+        out.write "::1        #{hosts[i]}.#{ips[j]}.xip.io\n"
+        out.write "127.0.0.1  #{hosts[i]}.#{ips[j]}.xip.io\n"
     end
 end
 out.close
