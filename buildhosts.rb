@@ -1,9 +1,5 @@
 def readFile(filename)
-    contents = ''
-    File.open(filename, "r") { |f|
-        contents = f.read
-    }
-    return contents
+    File.open(filename, 'r').read
 end
 
 config = readFile("config").split("&")
