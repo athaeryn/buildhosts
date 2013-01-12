@@ -9,12 +9,12 @@ end
 ipv6 = '::1        '
 home = '127.0.0.1  '
 
-config = readFile("config").split("&").each {|x| x.strip!}
+config = readFile('config').split('&').each {|x| x.strip!}
 hosts = sanitize config[0]
 ips   = sanitize config[1]
 
 out = File.open('newhosts', 'w+')
-out.write readFile "header"
+out.write readFile 'header'
 hosts.each do |host|
     out.write "#{ipv6}#{host}\n"
     out.write "#{home}#{host}\n"
