@@ -8,14 +8,13 @@ ips = config[1].split(" ")
 
 out = File.open('newhosts', 'w+')
 
-puts readFile "header"
+out.write readFile "header"
 (0..hosts.length - 1).each do |i|
-    puts "::1        #{hosts[i]}"
-    puts "127.0.0.1  #{hosts[i]}"
+    out.write "::1        #{hosts[i]}\n"
+    out.write "127.0.0.1  #{hosts[i]}\n"
     (0..ips.length - 1).each do |j|
-        puts "::1        #{hosts[i]}.#{ips[j]}"
-        puts "127.0.0.1  #{hosts[i]}.#{ips[j]}"
+        out.write "::1        #{hosts[i]}.#{ips[j]}\n"
+        out.write "127.0.0.1  #{hosts[i]}.#{ips[j]}\n"
     end
 end
-
 out.close
