@@ -1,5 +1,3 @@
-require "json"
-
 def readFile(filename)
     contents = ''
     File.open(filename, "r") { |f|
