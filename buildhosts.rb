@@ -8,8 +8,10 @@ def readFile(filename)
     return contents
 end
 
-hosts = readFile("hosts").split(" ")
-ips = readFile("ips").split(" ")
+config = readFile("config").split("&")
+
+hosts = config[0].split(" ")
+ips = config[1].split(" ")
 
 (0..hosts.length - 1).each do |i|
     puts "::1        #{hosts[i]}"
