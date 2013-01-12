@@ -1,5 +1,9 @@
 def readFile(filename)
-    File.open(filename, 'r').read
+    if File.exist? filename
+        File.open(filename, 'r').read
+    else
+        ''
+    end
 end
 
 def sanitize(string)
@@ -15,6 +19,7 @@ ips   = sanitize config[1]
 
 out = File.open('newhosts', 'w+')
 out.write readFile 'header'
+out.write readFile 'custom'
 hosts.each do |host|
     out.write "#{ipv6}#{host}\n"
     out.write "#{home}#{host}\n"
