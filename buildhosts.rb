@@ -7,10 +7,10 @@ def readFile(filename)
 end
 
 config = readFile("config").split("&")
-
 hosts = config[0].split(" ")
 ips = config[1].split(" ")
 
+puts readFile "header"
 (0..hosts.length - 1).each do |i|
     puts "::1        #{hosts[i]}"
     puts "127.0.0.1  #{hosts[i]}"
