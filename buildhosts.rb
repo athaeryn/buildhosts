@@ -10,8 +10,8 @@ def sanitize(string)
     string.split("\n").sort.delete_if {|x| x.start_with?('#') || x.strip == ''}
 end
 
-ipv6 = '::1        '
-home = '127.0.0.1  '
+ipv6 = '::1             '
+home = '127.0.0.1       '
 
 config = readFile('config').split('&').each {|x| x.strip!}
 hosts = sanitize config[0]
