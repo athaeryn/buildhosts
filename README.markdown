@@ -8,6 +8,14 @@ This is just some info about this script. It will:
 + grant you three wishes, and
 + do none of the above.
 
+Running the script
+-----------------
+
++ BACK UP YOUR CURRENT HOSTS FILE!
++ Symlink the buildhosts.sh file to ~/bin/hosts or something.
++ `cp sample-config config`
++ Use `hosts -e` to edit your config file (explained below
+
 sample-config:
 --------------
 
