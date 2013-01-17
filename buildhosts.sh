@@ -1,5 +1,9 @@
 #!/bin/bash
-cd /Users/mike/git/buildhosts
+if [ -z $HOSTSPATH ]; then
+    echo "Please define the \$HOSTSPATH variable."
+    exit 1
+fi
+cd $HOSTSPATH 
 if [ "$1" == "-e" ]; then
     vim config
 elif [ "$1" == "-l" ]; then
