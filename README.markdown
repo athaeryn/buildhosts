@@ -10,8 +10,8 @@ This is just some info about this script. It will:
 
 But really, this is just a script I wrote to write my /etc/hosts file for me.
 Configuring all the entries was a hassle, especially when using [xip.io](http://xip.io).
-This script take your local hostnames and the various IP address you need to pass
-to xip.io, and creates all the necessary entries to access any of the hosts while
+This script takes your local hostnames (and the various IP address you need to pass
+to xip.io) and create all the necessary entries to access any of the hosts while
 passing any of the IPs to xip.io.
 
 Installing & Running the Script
@@ -37,9 +37,9 @@ Installing & Running the Script
 About the IP Address Section
 ----------------------------
 
-The IP section is for working with [xip.io](http://xip.io), a DNS server that makes testing local
+The IP section is for working with xip.io, a DNS server that makes testing local
 websites on mobile devices mush simpler. You can read more about it [here](http://xip.io).
-If you don't want to work with [xip.io](http://xip.io), don't include IP addresses in your config file (the ampersand is also not necessary).
+If you don't want to work with xip.io, don't include IP addresses in your config file (the ampersand is also not necessary).
 
 Configuring the Script
 ----------------------
