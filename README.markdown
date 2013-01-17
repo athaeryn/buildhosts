@@ -23,7 +23,7 @@ Installing & Running the Script
     mkdir -p ~/git/buildhosts
     git clone https://github.com/athaeryn/buildhosts.git ~/git/buildhosts
     sudo cp /etc/hosts ~/git/buildhosts/hosts.bak
-    export DERP=/Users/mike/git/buildhosts
+    export HOSTSPATH=/Users/mike/git/buildhosts
     ln -s ~/git/buildhosts/buildhosts.sh ~/bin/hosts
 
 
