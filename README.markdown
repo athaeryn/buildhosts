@@ -18,6 +18,7 @@ Installing & Running the Script
 + Use `hosts -e` to edit your config file (explained below and in the `sample-config` file)
 + Any custom hosts can be put in a file named `custom`
 + Running `hosts` will recompile your `/etc/hosts` file
++ Running `hosts -e` will list the entries in your `/etc/hosts` file
 
 ### Example installation:
     mkdir -p ~/git/buildhosts
