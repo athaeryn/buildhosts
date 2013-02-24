@@ -29,4 +29,4 @@ end
 
 File.open("/usr/local/etc/nginx/nginx.conf", "w").write(conf)
 
-system("nginx -s reload")
+#system("nginx -s reload")
