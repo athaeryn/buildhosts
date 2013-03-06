@@ -40,7 +40,7 @@ About the IP Address Section
 ----------------------------
 
 The IP section is for working with xip.io, a DNS server that makes testing local
-websites on mobile devices mush simpler. You can read more about it [here](http://xip.io).
+websites on mobile devices much simpler. You can read more about it [here](http://xip.io).
 If you don't want to work with xip.io, don't include IP addresses in your config file (the ampersand is also not necessary).
 
 Configuring the Script
