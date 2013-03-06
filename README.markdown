@@ -33,6 +33,7 @@ Installing & Running the Script
     sudo cp /etc/hosts /etc/hosts.bak
     export HOSTSPATH=~/git/buildhosts
     ln -s ~/git/buildhosts/buildhosts.sh ~/bin/hosts
+    cp sample-config config
 
 
 About the IP Address Section
