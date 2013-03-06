@@ -27,10 +27,11 @@ Installing & Running the Script
 + Running `hosts -l` will list the entries in your `/etc/hosts` file
 
 ### Example installation:
-    mkdir -p ~/git/buildhosts
-    git clone https://github.com/athaeryn/buildhosts.git ~/git/buildhosts
-    sudo cp /etc/hosts ~/git/buildhosts/hosts.bak
-    export HOSTSPATH=/Users/mike/git/buildhosts
+    mkdir -p ~/git
+    cd ~/git
+    git clone https://github.com/athaeryn/buildhosts.git
+    sudo cp /etc/hosts /etc/hosts.bak
+    export HOSTSPATH=~/git/buildhosts
     ln -s ~/git/buildhosts/buildhosts.sh ~/bin/hosts
 
 
