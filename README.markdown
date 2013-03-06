@@ -46,7 +46,7 @@ If you don't want to work with xip.io, don't include IP addresses in your config
 Configuring the Script
 ----------------------
 
-This `config` file:
+If you run `hosts` with this `config` file:
 
 ### sample-config:
 
@@ -66,7 +66,7 @@ This `config` file:
     192.168.0.1
     10.0.1.1
 
-will produce this output:
+it will produce this output:
 
 ### /etc/hosts
     ##
