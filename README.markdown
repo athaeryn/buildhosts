@@ -27,24 +27,26 @@ Installing & Running the Script
 + Running `hosts -l` will list the entries in your `/etc/hosts` file
 
 ### Example installation:
-    mkdir -p ~/git/buildhosts
-    git clone https://github.com/athaeryn/buildhosts.git ~/git/buildhosts
-    sudo cp /etc/hosts ~/git/buildhosts/hosts.bak
-    export HOSTSPATH=/Users/mike/git/buildhosts
+    mkdir -p ~/git
+    cd ~/git
+    git clone https://github.com/athaeryn/buildhosts.git
+    sudo cp /etc/hosts /etc/hosts.bak
+    export HOSTSPATH=~/git/buildhosts
     ln -s ~/git/buildhosts/buildhosts.sh ~/bin/hosts
+    cp sample-config config
 
 
 About the IP Address Section
 ----------------------------
 
 The IP section is for working with xip.io, a DNS server that makes testing local
-websites on mobile devices mush simpler. You can read more about it [here](http://xip.io).
+websites on mobile devices much simpler. You can read more about it [here](http://xip.io).
 If you don't want to work with xip.io, don't include IP addresses in your config file (the ampersand is also not necessary).
 
 Configuring the Script
 ----------------------
 
-This `config` file:
+If you run `hosts` with this `config` file:
 
 ### sample-config:
 
@@ -64,7 +66,7 @@ This `config` file:
     192.168.0.1
     10.0.1.1
 
-will produce this output:
+it will produce this output:
 
 ### /etc/hosts
     ##
