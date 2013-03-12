@@ -19,6 +19,9 @@ elif [ "$1" == "-nginx" ]; then
     ruby manginx.rb
     exit 0
 fi
-ruby buildhosts.rb
-sudo cp newhosts /etc/hosts
 
+ruby buildhosts.rb
+
+cat header custom newhosts > temp
+sudo cp temp /etc/hosts
+rm newhosts temp
