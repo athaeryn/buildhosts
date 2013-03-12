@@ -6,17 +6,17 @@ def configuring what
     puts "Configuring: #{what}..."
 end
 
-def done next_step=""
+def done next_step=''
     puts "Done! #{next_step}"
 end
 
 # Set up teh parser and parse with it
 parser = ConfigParser.new
-conf = parser.parse "config"
+conf = parser.parse 'config'
 
 # If you don't have any IP addresses in your config, what are you doing here?
-if conf["ips"].nil? || conf["ips"].empty?
-    puts "What's the point?"
+if conf['ips'].nil? || conf['ips'].empty?
+    puts 'What\'s the point?'
     exit
 end
 
@@ -33,14 +33,14 @@ n.each_line do |line|
 end
 
 # This is where the files will be stored.
-base_path = "/usr/local/etc/nginx/xip"
+base_path = '/usr/local/etc/nginx/xip'
 `rm #{base_path}/*`
 
 # Le bread and buttere
 expected.each do |file|
     configuring file
     out = File.open("#{base_path}/#{file}", 'w+')
-    conf["ips"].each do |ip|
+    conf['ips'].each do |ip|
         # Simple. Just put a line in there for each IP in our config file.
         out.write "server_name #{file}.#{ip}.xip.io;\n"
     end
@@ -48,8 +48,8 @@ expected.each do |file|
 end
 
 # Now we just reload nginx and apologize if something goes rotten.
-done "Reloading nginx..."
-if system("nginx -s reload")
+done 'Reloading nginx...'
+if system('nginx -s reload')
     done
 else
     puts "Oops!\nSomething went wrong... Sorry."
