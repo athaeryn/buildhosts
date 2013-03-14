@@ -1,32 +1,56 @@
-def readFile(filename)
-    if File.exist? filename
-        File.open(filename, 'r').read
-    else
-        ''
+# Start by load the config parser 
+require './ConfigParser.rb'
+
+# Helper methods to print common messages
+def configuring what
+    puts "Configuring: #{what}..."
+end
+
+def done next_step=''
+    puts "Done! #{next_step}"
+end
+
+# Set up teh parser and parse with it
+parser = ConfigParser.new
+conf = parser.parse 'config'
+
+# If you don't have any IP addresses in your config, what are you doing here?
+if conf['ips'].nil? || conf['ips'].empty?
+    puts 'What\'s the point?'
+    exit
+end
+
+# Let's find out what nginx is expecting from us...
+expected = Array.new
+n = File.open('/usr/local/etc/nginx/nginx.conf', 'r')
+n.each_line do |line|
+    # So basically, if the line goes "include xip/derp.local;", we want to
+    # set up a file with that name with the appropriate server_name directives.
+    match = line.match(/include\s+xip\/([\w\.]+);/) 
+    if !match.nil? # We don't want to try to convert nil to an array...
+       expected << match.to_a[1..-1][0]
     end
 end
 
-def sanitize(string)
-    string.split("\n").sort.delete_if {|x| x.start_with?('#') || x.strip == ''}
-end
+# This is where the files will be stored.
+base_path = '/usr/local/etc/nginx/xip'
+`rm #{base_path}/*`
 
-config = readFile('config').split('&').each {|x| x.strip!}
-ips    = sanitize config[1]
-
-conf = ''
-
-File.readlines("/usr/local/etc/nginx/nginx.conf.src").each do |line|
-    if (line.include?("server_name") && !line.include?("xip.io") && !line.include?("#ignore"))
-            conf += line
-            line.chomp!(";\n")
-            ips.each do |ip|
-                conf += "#{line}.#{ip}.xip.io;\n"
-            end
-    else
-        conf += line
+# Le bread and buttere
+expected.each do |file|
+    configuring file
+    out = File.open("#{base_path}/#{file}", 'w+')
+    conf['ips'].each do |ip|
+        # Simple. Just put a line in there for each IP in our config file.
+        out.write "server_name #{file}.#{ip}.xip.io;\n"
     end
+    out.close
 end
 
-File.open("/usr/local/etc/nginx/nginx.conf", "w").write(conf)
-
-#system("nginx -s reload")
+# Now we just reload nginx and apologize if something goes rotten.
+done 'Reloading nginx...'
+if system('nginx -s reload')
+    done
+else
+    puts "Oops!\nSomething went wrong... Sorry."
+end
