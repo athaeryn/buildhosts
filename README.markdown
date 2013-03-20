@@ -54,9 +54,9 @@ If you run `hosts` with this `config` file:
         foobar.local
         example.local
     [ips]
-    192.168.1.1
-    192.168.0.1
-    10.0.1.1
+        192.168.1.1
+        192.168.0.1
+        10.0.1.1
 
 it will produce this output:
 
