@@ -50,10 +50,10 @@ If you run `hosts` with this `config` file:
 
 ### sample-config:
     
-    \[hosts\]
+    [hosts]
         foobar.local
         example.local
-    \[ips\]
+    [ips]
     192.168.1.1
     192.168.0.1
     10.0.1.1

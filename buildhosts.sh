@@ -17,6 +17,7 @@ elif [ "$1" == "-l" ]; then
     exit 0
 elif [ "$1" == "--nginx" ]; then
     ruby manginx.rb
+    nginx -s reload
     exit 0
 fi
 
