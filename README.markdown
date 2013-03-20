@@ -14,6 +14,10 @@ This script takes your local hostnames (and the various IP address you need to p
 to xip.io) and create all the necessary entries to access any of the hosts while
 passing any of the IPs to xip.io.
 
+### Manginx
+
+Also included in `manginx`, a script that helps with using xip.io with nginx.
+
 Installing & Running the Script
 -------------------------------
 
@@ -90,3 +94,17 @@ it will produce this output:
     127.0.0.1       foobar.local.192.168.1.1.xip.io
 
 Simple enough? I thought so.
+
+Manginx
+-------
+
+To run manginx, just do `hosts --nginx`.
+As far as configuring goes, just make sure you have an `xip` directory in the same directory as your `nginx.conf`.
+Then just duplicate and server_name lines and alter them like so:
+
+### Before:
+    server_name foobar.local;
+
+### After:
+    server_name foobar.local;
+    include xip/foobar.local;
