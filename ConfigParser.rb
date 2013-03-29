@@ -15,7 +15,7 @@ class ConfigParser
                 conf [key] = Array.new
                 last_key = key 
             else
-                conf[last_key] << line.strip
+                conf[last_key] << line.strip if (!line.strip.empty?)
             end
         end
         raw.close
