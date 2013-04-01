@@ -2,32 +2,43 @@
 
 require 'buildhosts'
 
+$path = File.expand_path('../../', __FILE__)
+
+$files = Hash.new
+
+def find_files files
+    files.each do |f|
+        if (File.exist?(File.expand_path("~/.buildhosts/#{f}")))
+            $files[f] = File.expand_path("~/.buildhosts/#{f}").chomp
+        else
+            $files[f] = "#{$path}/#{f}".chomp
+        end
+    end
+end
+
+find_files ['config', 'custom', 'header', 'newhosts', 'temp']
+
 case ARGV[0]
 when "-e"
-    system("vim config")
+    system("vim #{$files['config']}")
 when "-c"
-    system("vim custom")
+    system("vim #{$files['custom']}")
 when "-ec"
-    system("vim config ; vim custom")
+    system("vim #{$files['config']} ; vim #{$files['custom']}")
 when "-ce"
-    system("vim custom ; vim config")
+    system("vim #{$files['custom']} ; vim #{$files['config']}")
 when "-l"
     system("grep 127.0.0.1 /etc/hosts | grep -Ev 'xip.io|localhost' | awk '{print $2}'")
     exit
 when "--nginx", "-nginx"
-    puts "Will run manginx"
-    puts "Then reload nginx"
-    exit
-else
-    puts "Usage: "
+    puts "TODO: run manginx..."
     exit
 end
 
 # Do all the stuff
 puts "Building..."
-Buildhosts::Main.build
-system("")
-system("cat header custom newhosts > temp")
-system("sudo cp temp /etc/hosts")
-system("rm newhosts temp")
+Buildhosts::Main.build $files['config'], $files['newhosts']
+system("cat #{$files['header']} #{$files['custom']} #{$files['newhosts']} > #{$files['temp']}")
+system("sudo cp #{$files['temp']} /etc/hosts")
+system("rm #{$files['newhosts']} #{$files['temp']}")
 puts "Done!"

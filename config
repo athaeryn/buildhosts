@@ -1,13 +1,7 @@
 [hosts]
-    macmurray.local
-    allegheny.local
-    ecochair.local
-    echair2013.local
-    usb.local
-    blp.local
-    hdvisa.local
-    indian.local
-    gitlife.mrmikea.local
+    foobar.local
+    example.local
 [ips]
-    192.168.200.110
-
+    192.168.1.1
+    192.168.0.1
+    10.0.1.1
