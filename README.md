@@ -55,12 +55,12 @@ About the IP Address Section
 
 The IP section is for working with xip.io, a DNS server that makes testing local
 websites on mobile devices much simpler. You can read more about it [here](http://xip.io).
-If you don't want to work with xip.io, don't include IP addresses in your config file (the ampersand is also not necessary).
+If you don't want to work with xip.io, don't include the IP address section in your config file.
 
 Configuring the Script
 ----------------------
 
-If you run `hosts` with this `config` file:
+If you run `buildhosts` with this `config` file:
 
 ### sample-config:
 
@@ -108,9 +108,13 @@ Simple enough? I thought so.
 Manginx
 -------
 
-To run manginx, just do `hosts --nginx`.
+To run manginx, just do 
+
+    $ buildhosts --nginx
+
+
 As far as configuring goes, just make sure you have an `xip` directory in the same directory as your `nginx.conf`.
-Then just duplicate and server_name lines and alter them like so:
+Then just duplicate any server_name lines in your `nginx.conf` and alter them like so:
 
 ### Before:
     server_name foobar.local;
