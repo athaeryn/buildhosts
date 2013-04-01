@@ -1,23 +1,33 @@
-#!/bin/bash
-if [ "$1" == "-e" ]; then
-    vim config
-elif [ "$1" == "-c" ]; then
-    vim custom
-elif [ "$1" == "-ec" ]; then
-    vim config ; vim custom
-elif [ "$1" == "-ce" ]; then
-    vim custom ; vim config 
-elif [ "$1" == "-l" ]; then
-    grep 127.0.0.1 /etc/hosts | grep -Ev 'xip.io|localhost' | awk '{print $2}'
-    exit 0
-elif [ "$1" == "--nginx" ]; then
-    ruby manginx.rb
-    nginx -s reload
-    exit 0
-fi
+#!/usr/bin/env ruby
 
-ruby buildhosts.rb
+require 'buildhosts'
 
-cat header custom newhosts > temp
-sudo cp temp /etc/hosts
-rm newhosts temp
+case ARGV[0]
+when "-e"
+    system("vim config")
+when "-c"
+    system("vim custom")
+when "-ec"
+    system("vim config ; vim custom")
+when "-ce"
+    system("vim custom ; vim config")
+when "-l"
+    system("grep 127.0.0.1 /etc/hosts | grep -Ev 'xip.io|localhost' | awk '{print $2}'")
+    exit
+when "--nginx", "-nginx"
+    puts "Will run manginx"
+    puts "Then reload nginx"
+    exit
+else
+    puts "Usage: "
+    exit
+end
+
+# Do all the stuff
+puts "Building..."
+Buildhosts::Main.build
+system("")
+system("cat header custom newhosts > temp")
+system("sudo cp temp /etc/hosts")
+system("rm newhosts temp")
+puts "Done!"
