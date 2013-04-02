@@ -7,7 +7,7 @@ module Buildhosts
         attr_reader :path
 
         def initialize
-            @path = File.expand_path('../../', __FILE__)
+            @path = File.expand_path('../../files/', __FILE__)
             @files = Hash.new
             ['config', 'custom', 'header', 'newhosts', 'temp'].each do |f|
                 if (File.exist?(File.expand_path("~/.buildhosts/#{f}")))
