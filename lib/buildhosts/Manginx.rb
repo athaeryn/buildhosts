@@ -22,6 +22,7 @@ module Buildhosts
                 puts 'What\'s the point?'
                 exit
             end
+            system('mkdir -p /usr/local/etc/nginx/xip')
             # Let's find out what nginx is expecting from us...
             expected = Array.new
             n = File.open('/usr/local/etc/nginx/nginx.conf', 'r')
@@ -36,7 +37,7 @@ module Buildhosts
 
             # This is where the files will be stored.
             base_path = '/usr/local/etc/nginx/xip'
-            `rm #{base_path}/*`
+            `rm -f #{base_path}/*`
 
             # Le bread and buttere
             expected.each do |file|
@@ -51,7 +52,7 @@ module Buildhosts
 
             # Now we just reload nginx and apologize if something goes rotten.
             done 'Reloading nginx...'
-            if system('nginx -s reload')
+            if system('sudo nginx -s reload')
                 done
             else
                 puts "Oops!\nSomething went wrong... Sorry."
