@@ -13,7 +13,7 @@ module Buildhosts
                 if !match.nil?
                     key = match.to_a[1..-1][0]
                     conf [key] = Array.new
-                    last_key = key 
+                    last_key = key
                 else
                     conf[last_key] << line.strip if (!line.strip.empty?)
                 end
@@ -21,5 +21,5 @@ module Buildhosts
             raw.close
             return conf
         end
-    end 
+    end
 end

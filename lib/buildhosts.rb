@@ -2,7 +2,7 @@ require "buildhosts/version"
 require "buildhosts/ConfigParser"
 
 module Buildhosts
-    class Main 
+    class Main
         attr_reader :files
         attr_reader :path
 

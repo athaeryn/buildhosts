@@ -2,7 +2,7 @@ require 'buildhosts/ConfigParser'
 
 module Buildhosts
     class Manginx
-        
+
         def initialize config
             # Set up teh parser and parse with it
             @conf = Buildhosts::ConfigParser.parse config
@@ -29,7 +29,7 @@ module Buildhosts
             n.each_line do |line|
                 # So basically, if the line goes "include xip/derp.local;", we want to
                 # set up a file with that name with the appropriate server_name directives.
-                match = line.match(/include\s+xip\/([\w\.]+);/) 
+                match = line.match(/include\s+xip\/([\w\.]+);/)
                 if !match.nil? # We don't want to try to convert nil to an array...
                    expected << match.to_a[1..-1][0]
                 end

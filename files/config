@@ -1,7 +1,6 @@
 [hosts]
-    foobar.local
-    example.local
+    foobar.dev
+    example.dev
 [ips]
-    192.168.1.1
-    192.168.0.1
     10.0.1.1
+    192.168.0.1

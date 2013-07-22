@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Buildhosts::VERSION
   spec.authors       = ["Mike Anderson"]
   spec.email         = ["athaeryn@me.com"]
-  spec.description   = "Buildhosts." 
-  spec.summary       = "A utiliy for managing hosts (and IPs for xip.io)." 
+  spec.description   = "Buildhosts."
+  spec.summary       = "A utiliy for managing hosts (and IPs for xip.io)."
   spec.homepage      = ""
   spec.license       = "MIT"
 
